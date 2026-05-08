@@ -58,14 +58,38 @@
       transform: translateY(0);
     }
 
+    /* Section Image */
+    .section-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2rem;
+    }
+
     /* Hero Section */
     .hero {
       background-color: var(--color-navy);
       color: var(--color-white);
-      padding: clamp(4rem, 12vw, 8rem) 1.5rem;
+      padding: 0;
       text-align: center;
       position: relative;
       overflow: hidden;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
     }
 
     .hero::before {
@@ -75,8 +99,9 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(201, 169, 110, 0.08) 0%, transparent 70%);
+      background: linear-gradient(to bottom, rgba(27, 40, 56, 0.4) 0%, rgba(27, 40, 56, 0.7) 100%);
       pointer-events: none;
+      z-index: 1;
     }
 
     .hero-content {
@@ -455,6 +480,7 @@
 
   <!-- Hero -->
   <header class="hero">
+    <img src="./images/hero.png" alt="夜の東京を走る高級車" class="hero-bg">
     <div class="hero-content">
       <div class="hero-badge">Premium Chauffeur Service</div>
       <h1>木の子交通だより</h1>
@@ -476,6 +502,7 @@
   <!-- TRAINING -->
   <div class="section-divider"></div>
   <section class="newsletter-section fade-in">
+    <img src="./images/training.png" alt="ホスピタリティ研修の様子" class="section-image">
     <div class="section-label">Section 01</div>
     <h3 class="section-title-en">TRAINING</h3>
     <p class="section-title-jp">5つ星基準のホスピタリティと「安心」の設計</p>
@@ -497,6 +524,7 @@
   <!-- OPERATIONS -->
   <div class="section-divider"></div>
   <section class="newsletter-section fade-in">
+    <img src="./images/operations.png" alt="空港でお客様をお迎えするショーファー" class="section-image">
     <div class="section-label">Section 02</div>
     <h3 class="section-title-en">OPERATIONS</h3>
     <p class="section-title-jp">フライト早着・遅延時の対応</p>
@@ -522,6 +550,7 @@
   <!-- AVAILABILITY -->
   <div class="section-divider"></div>
   <section class="newsletter-section fade-in">
+    <img src="./images/availability.png" alt="桜並木と高級車" class="section-image">
     <div class="section-label">Section 03</div>
     <h3 class="section-title-en">AVAILABILITY</h3>
     <p class="section-title-jp">最新の予約状況</p>
@@ -583,6 +612,7 @@
   <!-- NEW PLAN -->
   <div class="section-divider"></div>
   <section class="newsletter-section fade-in">
+    <img src="./images/new-plan.png" alt="高級車の車内、チャーターサービス" class="section-image">
     <div class="section-label">Section 01</div>
     <h3 class="section-title-en">NEW PLAN</h3>
     <p class="section-title-jp">4時間貸切チャータープラン</p>
@@ -612,6 +642,7 @@
   <!-- PREMIUM SERVICE -->
   <div class="section-divider"></div>
   <section class="newsletter-section fade-in">
+    <img src="./images/premium-service.png" alt="新幹線ホームでのエスコートサービス" class="section-image">
     <div class="section-label">Section 02</div>
     <h3 class="section-title-en">PREMIUM SERVICE</h3>
     <p class="section-title-jp">エスコートサービス</p>
@@ -660,6 +691,7 @@
   <!-- PICKUP INFO -->
   <div class="section-divider"></div>
   <section class="newsletter-section fade-in">
+    <img src="./images/pickup-info.png" alt="羽田空港ターミナル" class="section-image">
     <div class="section-label">Section 04</div>
     <h3 class="section-title-en">PICKUP INFO</h3>
     <p class="section-title-jp">空港お迎え場所のご案内</p>
