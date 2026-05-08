@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>木の子交通だより | Kinoko Group Newsletter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-bg: #F8F7F5;
+      --color-white: #FFFFFF;
+      --color-text: #1A1A1A;
+      --color-text-light: #4A4A4A;
+      --color-text-muted: #6B6B6B;
+      --color-gold: #C9A96E;
+      --color-gold-light: #E8D5A8;
+      --color-navy: #1B2838;
+      --color-navy-light: #2A3F55;
+      --color-link: #3A6B9F;
+      --color-border: #E8E6E3;
+      --font-jp: 'Noto Sans JP', sans-serif;
+      --font-en: 'Inter', sans-serif;
+      --max-width: 900px;
+      --section-padding: clamp(3rem, 8vw, 6rem);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-jp);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: var(--color-navy);
+      color: var(--color-white);
+      padding: clamp(4rem, 12vw, 8rem) 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201, 169, 110, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--font-en);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold);
+      padding: 0.4em 1.2em;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-en);
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+    }
+
+    .hero-tagline {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.05em;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 1px;
+      background: var(--color-gold);
+      margin: 2rem auto;
+    }
+
+    /* Volume Header */
+    .volume-header {
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--section-padding) 1.5rem clamp(2rem, 5vw, 3rem);
+      text-align: center;
+    }
+
+    .volume-marker {
+      font-family: var(--font-en);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1rem;
+    }
+
+    .volume-title {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 600;
+      color: var(--color-navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .volume-date {
+      font-family: var(--font-en);
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* Sections */
+    .newsletter-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 4rem) 1.5rem;
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--color-gold-light), transparent);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-en);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--color-gold);
+    }
+
+    .section-title-en {
+      font-family: var(--font-en);
+      font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--color-navy);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title-jp {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--color-text-light);
+      margin-bottom: 2rem;
+    }
+
+    .content-block {
+      margin-bottom: 2rem;
+    }
+
+    .content-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .lang-label {
+      font-family: var(--font-en);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 0.6rem;
+      padding-left: 0;
+    }
+
+    .content-jp {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--color-text);
+      margin-bottom: 1.8rem;
+    }
+
+    .content-en {
+      font-family: var(--font-en);
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--color-text-light);
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--color-white);
+      border-left: 3px solid var(--color-gold);
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .highlight-box p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* Price callout */
+    .price-callout {
+      background: var(--color-navy);
+      color: var(--color-white);
+      padding: 1.5rem 2rem;
+      border-radius: 6px;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    .price-amount {
+      font-family: var(--font-en);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--color-gold);
+      margin: 0.3rem 0;
+    }
+
+    .price-detail {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Table */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border-radius: 6px;
+      border: 1px solid var(--color-border);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      min-width: 500px;
+    }
+
+    .info-table thead {
+      background: var(--color-navy);
+      color: var(--color-white);
+    }
+
+    .info-table th {
+      padding: 0.9rem 1rem;
+      font-weight: 500;
+      text-align: left;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .info-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+    }
+
+    .info-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .info-table tbody tr:nth-child(even) {
+      background: rgba(248, 247, 245, 0.5);
+    }
+
+    .table-note {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      margin-top: 0.8rem;
+      font-style: italic;
+    }
+
+    /* Availability indicator */
+    .availability-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+
+    .availability-item {
+      background: var(--color-white);
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+      border: 1px solid var(--color-border);
+    }
+
+    .availability-status {
+      font-family: var(--font-en);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .status-limited {
+      color: #C0392B;
+    }
+
+    .status-available {
+      color: #27AE60;
+    }
+
+    .availability-period {
+      font-size: 0.85rem;
+      color: var(--color-text);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--color-navy);
+      color: var(--color-white);
+      text-align: center;
+      padding: clamp(3rem, 8vw, 5rem) 1.5rem;
+    }
+
+    .footer-company {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-company-en {
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-link {
+      font-family: var(--font-en);
+      font-size: 0.8rem;
+      color: var(--color-gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-link:hover {
+      opacity: 0.7;
+    }
+
+    .footer .gold-line {
+      margin: 1.5rem auto;
+    }
+
+    .footer-copy {
+      font-family: var(--font-en);
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .availability-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-section {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+      }
+
+      .info-table {
+        font-size: 0.75rem;
+      }
+
+      .info-table th,
+      .info-table td {
+        padding: 0.6rem 0.7rem;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      .hero { padding: 2rem 1rem; }
+      .fade-in { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Premium Chauffeur Service</div>
+      <h1>木の子交通だより</h1>
+      <p class="hero-subtitle">Kinoko Group Newsletter</p>
+      <div class="gold-line"></div>
+      <p class="hero-tagline">すべての移動に、信頼と安心を。</p>
+    </div>
+  </header>
+
+  <!-- Vol.1 -->
+  <div class="volume-header">
+    <div class="fade-in">
+      <p class="volume-marker">— Vol. 1 —</p>
+      <h2 class="volume-title">木の子交通だより</h2>
+      <p class="volume-date">March 2026</p>
+    </div>
+  </div>
+
+  <!-- TRAINING -->
+  <div class="section-divider"></div>
+  <section class="newsletter-section fade-in">
+    <div class="section-label">Section 01</div>
+    <h3 class="section-title-en">TRAINING</h3>
+    <p class="section-title-jp">5つ星基準のホスピタリティと「安心」の設計</p>
+
+    <div class="content-block">
+      <p class="content-jp">
+        ホテルコンシェルジュアカデミー代表理事の田隝益美様を講師としてお招きし、特別研修を実施いたしました。オペレーションスタッフは「顔が見えない中で信頼を築く力」を磨き、ドライバーは「安心を偶然ではなく必然にする」というフィロソフィーのもと、世界水準のホスピタリティを実践に組み込む訓練を行いました。
+      </p>
+    </div>
+
+    <div class="content-block">
+      <p class="lang-label">English</p>
+      <p class="content-en">
+        We hosted a special training session led by Ms. Masumi Tajima, President of the Hotel Concierge Academy. Operations staff refined the art of building trust through voice and writing alone — without face-to-face interaction. Chauffeurs integrated world-class hospitality standards under the philosophy of making safety and comfort an inevitability, not a coincidence.
+      </p>
+    </div>
+  </section>
+
+  <!-- OPERATIONS -->
+  <div class="section-divider"></div>
+  <section class="newsletter-section fade-in">
+    <div class="section-label">Section 02</div>
+    <h3 class="section-title-en">OPERATIONS</h3>
+    <p class="section-title-jp">フライト早着・遅延時の対応</p>
+
+    <div class="content-block">
+      <div class="highlight-box">
+        <p>
+          <strong>自動再手配：</strong>リアルタイムフライトモニタリングにより、早着・遅延に自動で対応<br>
+          <strong>90分無料待機：</strong>到着後90分間の待機を無償でご提供
+        </p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <p class="lang-label">English</p>
+      <p class="content-en">
+        <strong>Automated Rescheduling:</strong> Real-time flight monitoring enables automatic adjustment for early arrivals and delays.<br>
+        <strong>90-Minute Complimentary Waiting:</strong> We provide up to 90 minutes of free waiting time after landing.
+      </p>
+    </div>
+  </section>
+
+  <!-- AVAILABILITY -->
+  <div class="section-divider"></div>
+  <section class="newsletter-section fade-in">
+    <div class="section-label">Section 03</div>
+    <h3 class="section-title-en">AVAILABILITY</h3>
+    <p class="section-title-jp">最新の予約状況</p>
+
+    <div class="content-block">
+      <div class="availability-grid">
+        <div class="availability-item">
+          <p class="availability-status status-limited">Almost Full</p>
+          <p class="availability-period">3月〜4月前半<br><span style="font-size:0.78rem;color:var(--color-text-muted);">Late March – Mid April</span></p>
+        </div>
+        <div class="availability-item">
+          <p class="availability-status status-available">Accepting</p>
+          <p class="availability-period">4月後半〜<br><span style="font-size:0.78rem;color:var(--color-text-muted);">Late April onwards</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <p class="content-jp">
+        3月下旬から4月前半にかけて満車間近となっております。4月後半以降は予約を受付中です。お早めにご相談ください。
+      </p>
+      <p class="lang-label" style="margin-top:1.2rem;">English</p>
+      <p class="content-en">
+        Late March through mid-April is nearly fully booked. We are currently accepting reservations for late April onwards. Please inquire early to secure your preferred dates.
+      </p>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <div class="section-divider"></div>
+  <section class="newsletter-section fade-in">
+    <div class="section-label">Section 04</div>
+    <h3 class="section-title-en">TEAM</h3>
+    <p class="section-title-jp">体制変更のお知らせ</p>
+
+    <div class="content-block">
+      <p class="content-jp">
+        カスタマーサービス部門を東銀座オフィスへ移転いたしました。お電話番号・メールアドレスに変更はございません。これまでと変わらずお気軽にご連絡ください。
+      </p>
+    </div>
+
+    <div class="content-block">
+      <p class="lang-label">English</p>
+      <p class="content-en">
+        Our customer service team has relocated to our Higashi Ginza office. Phone numbers and email addresses remain unchanged — please continue to reach out as usual.
+      </p>
+    </div>
+  </section>
+
+  <!-- Vol.2 -->
+  <div class="volume-header" style="margin-top: 2rem;">
+    <div class="fade-in">
+      <p class="volume-marker">— Vol. 2 —</p>
+      <h2 class="volume-title">木の子交通だより</h2>
+      <p class="volume-date">April 2026</p>
+    </div>
+  </div>
+
+  <!-- NEW PLAN -->
+  <div class="section-divider"></div>
+  <section class="newsletter-section fade-in">
+    <div class="section-label">Section 01</div>
+    <h3 class="section-title-en">NEW PLAN</h3>
+    <p class="section-title-jp">4時間貸切チャータープラン</p>
+
+    <div class="content-block">
+      <div class="price-callout">
+        <p class="price-detail">4時間 / 50km以内</p>
+        <p class="price-amount">¥39,800</p>
+        <p class="price-detail">税込 / Tax included — 延長不可 / No extension</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <p class="content-jp">
+        ディナー送迎、早朝コンテンツ（ゴルフ・釣りなど）、ディズニーリゾートへの往復など、幅広いシーンでご利用いただけます。4時間・50km以内の完結型プランで、手軽にプライベートチャーターをお楽しみください。
+      </p>
+    </div>
+
+    <div class="content-block">
+      <p class="lang-label">English</p>
+      <p class="content-en">
+        A fixed 4-hour / 50km charter plan at ¥39,800 (tax included), with no extension available. Perfect for dinner transfers, early morning activities (golf, fishing), Disney Resort round-trips, and more. Experience the ease of a private chauffeur for your everyday premium moments.
+      </p>
+    </div>
+  </section>
+
+  <!-- PREMIUM SERVICE -->
+  <div class="section-divider"></div>
+  <section class="newsletter-section fade-in">
+    <div class="section-label">Section 02</div>
+    <h3 class="section-title-en">PREMIUM SERVICE</h3>
+    <p class="section-title-jp">エスコートサービス</p>
+
+    <div class="content-block">
+      <div class="highlight-box">
+        <p>
+          <strong>新幹線ホームお出迎え</strong> — ホームまでスタッフがお迎えにあがります<br>
+          <strong>空港チェックイン同行</strong> — チェックイン手続きをサポート<br>
+          <strong>ミート＆バゲージサービス</strong> — お荷物のお預かりと車両までのご案内
+        </p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <p class="lang-label">English</p>
+      <p class="content-en">
+        <strong>Shinkansen Platform Meet & Assist</strong> — Our staff greets you directly on the platform.<br>
+        <strong>Airport Check-in Support</strong> — We accompany you through the check-in process.<br>
+        <strong>Meet & Baggage Assistance</strong> — We handle your luggage and escort you to the vehicle.
+      </p>
+    </div>
+  </section>
+
+  <!-- NOTICE -->
+  <div class="section-divider"></div>
+  <section class="newsletter-section fade-in">
+    <div class="section-label">Section 03</div>
+    <h3 class="section-title-en">NOTICE</h3>
+    <p class="section-title-jp">クルーズ船送迎について</p>
+
+    <div class="content-block">
+      <p class="content-jp">
+        晴海ふ頭へのお迎えは事前予約が必須となります。大型船の入港時は交通規制等により制限がかかる場合がございます。ご利用予定のお客様はお早めにご相談ください。
+      </p>
+    </div>
+
+    <div class="content-block">
+      <p class="lang-label">English</p>
+      <p class="content-en">
+        Pickup at Harumi Pier requires advance reservation. During large cruise ship arrivals, traffic restrictions may apply and service availability may be limited. Please contact us in advance if you plan to use this service.
+      </p>
+    </div>
+  </section>
+
+  <!-- PICKUP INFO -->
+  <div class="section-divider"></div>
+  <section class="newsletter-section fade-in">
+    <div class="section-label">Section 04</div>
+    <h3 class="section-title-en">PICKUP INFO</h3>
+    <p class="section-title-jp">空港お迎え場所のご案内</p>
+
+    <div class="content-block">
+      <div class="table-wrapper">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>空港 / Airport</th>
+              <th>ターミナル / Terminal</th>
+              <th>お迎え場所 / Pickup Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="4"><strong>羽田<br>Haneda</strong></td>
+              <td>T1 国内線 / Domestic</td>
+              <td>1F 到着ロビー外 一般車乗降場</td>
+            </tr>
+            <tr>
+              <td>T2 国内線 / Domestic</td>
+              <td>1F 到着ロビー外 一般車乗降場</td>
+            </tr>
+            <tr>
+              <td>T2 国際線 / International</td>
+              <td>1F 到着ロビー外 一般車乗降場</td>
+            </tr>
+            <tr>
+              <td>T3 国際線 / International</td>
+              <td>1F 到着ロビー外 一般車乗降場</td>
+            </tr>
+            <tr>
+              <td rowspan="3"><strong>成田<br>Narita</strong></td>
+              <td>T1</td>
+              <td>1F 到着ロビー外 一般車乗降場</td>
+            </tr>
+            <tr>
+              <td>T2</td>
+              <td>1F 到着ロビー外 一般車乗降場</td>
+            </tr>
+            <tr>
+              <td>T3</td>
+              <td>T2 一般車乗降場（T3専用なし）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        ※ 駐車場満車時は近隣待機場所へご案内する場合がございます。担当ドライバーよりご連絡いたします。<br>
+        <span style="font-family: var(--font-en);">* When parking is full, we may guide you to an alternate nearby location. Your assigned chauffeur will contact you directly.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="gold-line"></div>
+    <p class="footer-company">木の子交通株式会社</p>
+    <p class="footer-company-en">Kinoko Group Co., Ltd.</p>
+    <a href="https://kinoko-group.co.jp/" target="_blank" rel="noopener" class="footer-link">kinoko-group.co.jp</a>
+    <p class="footer-copy">&copy; 2026 Kinoko Group. All rights reserved.</p>
+  </footer>
+
+  <!-- Scroll Animation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      elements.forEach(el => observer.observe(el));
+    });
+  </script>
+
+</body>
+</html>
